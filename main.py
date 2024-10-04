@@ -8,7 +8,7 @@ from langchain.text_splitter import CharacterTextSplitter
 app = Flask(__name__)
 PERSIST = True
 vectorstore = None
-GROQ_API_KEY = "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"
+GROQ_API_KEY = ""
 
 artifact_prompts = {
     "artifact001": "Describe the history and significance of the ancient Greek vase with ID artifact001",
