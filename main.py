@@ -8,7 +8,15 @@ from langchain.text_splitter import CharacterTextSplitter
 app = Flask(__name__)
 PERSIST = True
 vectorstore = None
-GROQ_API_KEY = ""
+GROQ_API_KEY = "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"
+
+artifact_prompts = {
+    "artifact001": "Describe the history and significance of the ancient Greek vase with ID artifact001",
+    "artifact002": "What you can do?",
+    # Add more artifact IDs and their corresponding prompts here
+}
+
+
 def initialize_vectorstore():
     global vectorstore
     if PERSIST and os.path.exists("persist"):
@@ -52,7 +60,7 @@ def home():
 def ask():
     message = request.json['message']
     chat_history = request.json.get('chat_history', [])
-    relevant_docs = vectorstore.similarity_search(message, k=2)
+    relevant_docs = vectorstore.similarity_search(message, k=2)  # Assuming vectorstore is defined
     context = "\n".join([doc.page_content for doc in relevant_docs])
     prompt = f"""Context: {context}
     Question: {message}
@@ -60,6 +68,32 @@ def ask():
     answer = query_groq(prompt)
     chat_history.append((message, answer))
     return jsonify({'answer': answer, 'chat_history': chat_history})
+
+@app.route('/artifact_recognized', methods=['POST'])
+def artifact_recognized():
+    artifact_data = request.json
+    artifact_id = artifact_data.get('artifact_id')
+    
+    if artifact_id not in artifact_prompts:
+        return jsonify({"status": "error", "message": "Unknown artifact ID"}), 400
+
+    prompt = artifact_prompts[artifact_id]
+    print(prompt)
+
+     
+    # Simulate a request to the /ask endpoint
+    with app.test_request_context('/ask', method='POST', json={'message': prompt}):
+        response = ask()
+
+    response_data = response.get_json() 
+    
+    return jsonify({
+        "status": "success",
+        "message": "Artifact recognized",
+        "artifact_id": artifact_id,
+        "data": response_data 
+    })
+
 
 if __name__ == '__main__':
     initialize_vectorstore()
