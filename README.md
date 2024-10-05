@@ -151,3 +151,9 @@ python main.py
 ```
 
 5. Open browser go to this url `http://127.0.0.1:5000` interact with this rover now❗
+
+
+## Output of this project
+
+* Rover are recoganize the artifact and send the details about the artifact to the Middleware flask API
+
