@@ -72,5 +72,6 @@ For the user interface, instead of Gradio, a custom **chat interface** has been 
 ### Self-Propelled Robot
 splayed on a **self-propelled robot** that can move alongside the visitor, constantly ready to answer their queries.
 
-![Solution Architecture](C:\Users\Prashanth\Pictures\Screenshots\chitchat one.png)
+![Solution Architecture]()
+
 
