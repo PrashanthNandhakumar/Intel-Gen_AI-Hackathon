@@ -106,6 +106,10 @@ This vector data can then be accessed by LLMs to process tasks such as answering
 - These commands are processed and integrated into the **pretrained AI model**, allowing the robot to display and answer visitor queries.
 
 This integration of **LLMs, Groq's processing systems, ChromaDB, HTML/CSS, and robotics** results in a fully functional **Chit Chat Robotic Bot** capable of enhancing museum experiences by providing detailed and interactive responses to visitor questions.
+## Why GenAI?
+- Generative AI can be very interactive to the visitors and can enhance the experience of the visitors. 
+- It can make conversations in a flow with the reference to the previous context. Overall, the knowledge about the artefacts can be delivered precisely.
+- With the Gen-AI and Robotics Technology, this “Chit Chat” Robotic Bot will give the better visitors satisfaction with its effective responses of trained AI model. 
 
 
 
