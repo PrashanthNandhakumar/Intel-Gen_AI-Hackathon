@@ -75,5 +75,6 @@ The entire application is displayed on a **self-propelled robot** that can move 
 ![Solution Architecture](https://github.com/dev-dhanushkumar/Intel-Gen_AI-Hackathon/blob/documentation/static/chitchat%20one.png)
 
 ## Technological Architecture
+![Technological Architecture](https://github.com/dev-dhanushkumar/Intel-Gen_AI-Hackathon/blob/documentation/static/chitchat%20one.png)
 
 
