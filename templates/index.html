@@ -163,7 +163,7 @@
                 contentType: 'application/json',
                 data: JSON.stringify({ message: userInput, chat_history: chatHistory }),
                 success: function (response) {
-                    appendMessage('AR-tifact', response.answer, "{{url_for('static',filename='logo-Meta.png')}}");
+                    appendMessage('AR-tifact', response.answer, "{{url_for('static',filename='rover.png')}}");
                     chatHistory = response.chat_history;
                 }
             });
@@ -186,7 +186,7 @@
                 method: 'GET',
                 success: function (response) {
                     if (response.answer) {
-                        appendMessage('AR-tifact', response.answer, "{{url_for('static',filename='logo-Meta.png')}}");
+                        appendMessage('AR-tifact', response.answer, "{{url_for('static',filename='rover.png')}}");
                         chatHistory = response.chat_history;
                     }
                 },
