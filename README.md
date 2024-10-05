@@ -157,5 +157,14 @@ python main.py
 
 * Rover are recoganize the artifact and send the details about the artifact to the Middleware flask API
 
-  [Watch the video tutorial](https://github.com/dev-dhanushkumar/Intel-Gen_AI-Hackathon/blob/main/static/rover_recoganization_video.mp4)
+  [Watch the Rover video ](https://github.com/dev-dhanushkumar/Intel-Gen_AI-Hackathon/blob/main/static/rover_recoganization_video.mp4)
+
+* Gen AI API test with postman
+
+![postman api](https://github.com/dev-dhanushkumar/Intel-Gen_AI-Hackathon/blob/main/static/GenAI_API_Test.png)
+
+* Web Ingerface intraction with museum visitor to clear there doubts
+
+  ![postman api](https://github.com/dev-dhanushkumar/Intel-Gen_AI-Hackathon/blob/main/static/recoganize_data.png)
+  
 
