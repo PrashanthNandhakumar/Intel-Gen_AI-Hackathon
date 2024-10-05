@@ -5,10 +5,25 @@ from langchain_community.document_loaders import TextLoader
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain.text_splitter import CharacterTextSplitter
+import numpy as np
+from sklearn.feature_extraction.text import TfidfVectorizer
+
+from sklearnex import patch_sklearn
+patch_sklearn()
+
+
 app = Flask(__name__)
 PERSIST = True
 vectorstore = None
 GROQ_API_KEY = ""
+
+artifact_prompts = {
+    "1": "Describe the history of Dancing girl.",
+    "2": "Describe the details and history of Bust of Kanishka",
+    # Add more artifact IDs and their corresponding prompts here
+}
+
+
 def initialize_vectorstore():
     global vectorstore
     if PERSIST and os.path.exists("persist"):
@@ -19,7 +34,16 @@ def initialize_vectorstore():
         documents = loader.load()
         text_splitter = CharacterTextSplitter(chunk_size=1000, chunk_overlap=0)
         texts = text_splitter.split_documents(documents)
-        vectorstore = Chroma.from_documents(texts, HuggingFaceEmbeddings(), persist_directory="persist")
+        # vectorstore = Chroma.from_documents(texts, HuggingFaceEmbeddings(), persist_directory="persist")
+
+        # Use Intel-optimized TfidfVectorizer instead of HuggingFaceEmbeddings
+        vectorizer = TfidfVectorizer()
+        tfidf_matrix = vectorizer.fit_transform([doc.page_content for doc in texts])
+        
+        vectorstore = Chroma.from_texts([doc.page_content for doc in texts], 
+                                        embedding_function=lambda x: tfidf_matrix.toarray(), 
+                                        persist_directory="persist")
+
 def query_groq(prompt):
     url = "https://api.groq.com/openai/v1/chat/completions"
     headers = {
@@ -52,7 +76,7 @@ def home():
 def ask():
     message = request.json['message']
     chat_history = request.json.get('chat_history', [])
-    relevant_docs = vectorstore.similarity_search(message, k=2)
+    relevant_docs = vectorstore.similarity_search(message, k=2)  # Assuming vectorstore is defined
     context = "\n".join([doc.page_content for doc in relevant_docs])
     prompt = f"""Context: {context}
     Question: {message}
@@ -61,6 +85,52 @@ def ask():
     chat_history.append((message, answer))
     return jsonify({'answer': answer, 'chat_history': chat_history})
 
+@app.route('/artifact_recognized', methods=['POST'])
+def artifact_recognized():
+    artifact_data = request.json
+    artifact_id = artifact_data.get('artifact_id')
+    
+    if artifact_id not in artifact_prompts:
+        return jsonify({"status": "error", "message": "Unknown artifact ID"}), 400
+
+    prompt = artifact_prompts[artifact_id]
+    print(prompt)
+
+     
+    # Simulate a request to the /ask endpoint
+    with app.test_request_context('/ask', method='POST', json={'message': prompt}):
+        response = ask()
+
+    response_data = response.get_json() 
+     # Store this response data for retrieval by the client
+    app.config['LATEST_UPDATE'] = response_data
+    
+    return jsonify({
+        "status": "success",
+        "message": "Artifact recognized",
+        "artifact_id": artifact_id,
+        "data": response_data 
+    })
+    # requests.post(' https://7188-2409-408d-339f-b4ec-c901-464a-4327-a55e.ngrok-free.app/update_chat', json={
+    #     'message': response_data,
+    # })
+
+@app.route('/update_chat', methods=['GET'])
+def update_chat():
+    latest_update = app.config.get('LATEST_UPDATE')
+    # This endpoint will be called by the server to push updates to the web interface
+    # data = request.json
+    app.config['LATEST_UPDATE'] = None
+    # In a real-world scenario, you would push this update to connected clients
+    # For simplicity, we'll just print it here
+    # print(f"New message from {data['sender']}: {data['message']}")
+    # return jsonify({
+    #     'status': 'success',
+    #     'data': data
+    # })
+    return jsonify(latest_update) if latest_update else jsonify({"status": "no update"})
+
+
 if __name__ == '__main__':
     initialize_vectorstore()
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=5000)
