@@ -70,8 +70,10 @@ For responding to visitor questions, this trained model will retrieve the necess
 For the user interface, instead of Gradio, a custom **chat interface** has been created using **HTML and CSS** for a more flexible and responsive design. Visitors can ask questions through the **voice recognition module**, which will convert speech to text and then provide that input to the model.
 
 ### Self-Propelled Robot
-splayed on a **self-propelled robot** that can move alongside the visitor, constantly ready to answer their queries.
+The entire application is displayed on a **self-propelled robot** that can move alongside the visitor, constantly ready to answer their queries.
 
-![Solution Architecture]()
+![Solution Architecture](https://github.com/dev-dhanushkumar/Intel-Gen_AI-Hackathon/blob/documentation/static/chitchat%20one.png)
+
+## Technological Architecture
 
 
