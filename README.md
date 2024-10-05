@@ -111,5 +111,18 @@ This integration of **LLMs, Groq's processing systems, ChromaDB, HTML/CSS, and r
 - It can make conversations in a flow with the reference to the previous context. Overall, the knowledge about the artefacts can be delivered precisely.
 - With the Gen-AI and Robotics Technology, this “Chit Chat” Robotic Bot will give the better visitors satisfaction with its effective responses of trained AI model. 
 
+## RoverBot
+The **Museum Management Rover** is an advanced robotic machine that moves among visitors at a museum, providing directions to artifacts of interest. The rover employs a **magnetic strip** embedded on the floor, **infrared sensors**, **light-dependent resistors (LDRs)**, and a **laser module** to detect moving black lines. Additionally, the rover aims laser beams towards the LDR mounted on the robot’s board to detect sudden light variations, which indicate the presence of artifacts.
+
+## Features
+
+- **Line Following**: The rover follows the black tape path using three IR sensors.
+  
+- **Artifact Detection**: LDRs are utilized to detect lasers on the artifacts over a specific duration.
+  
+- **Bluetooth Control**: A mobile application is implemented to enable Bluetooth control of the rover.
+  
+- **Continuous Laser Control**: The laser module can be used for various applications that require constant on-off cycles.
+
 
 
