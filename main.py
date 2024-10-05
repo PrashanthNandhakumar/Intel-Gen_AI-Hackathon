@@ -111,7 +111,7 @@ def artifact_recognized():
         "artifact_id": artifact_id,
         "data": response_data 
     })
-    # requests.post(' https://7188-2409-408d-339f-b4ec-c901-464a-4327-a55e.ngrok-free.app/update_chat', json={
+    # requests.post('http://172.168.72.42:5000/update_chat', json={
     #     'message': response_data,
     # })
 
