@@ -125,4 +125,29 @@ The **Museum Management Rover** is an advanced robotic machine that moves among 
 - **Continuous Laser Control**: The laser module can be used for various applications that require constant on-off cycles.
 
 
+## Installation
 
+1. Create a Virtual Environment:
+```bash
+python -m venv venv
+```
+2. Activate the Virtual Environment:
+
+On Windows:
+```sh
+my_env\Scripts\activate
+```
+On macOS/Linux:
+```sh
+source my_env/bin/activate
+```
+3. Install Required Packages:
+```bash
+pip install -r requirements.txt
+```
+4. Open project file to run the project
+```sh
+python main.py
+```
+
+5. Open browser go to this url `http://127.0.0.1:5000` interact with this rover now❗
