@@ -77,4 +77,35 @@ The entire application is displayed on a **self-propelled robot** that can move 
 ## Technological Architecture
 ![Technological Architecture](https://github.com/dev-dhanushkumar/Intel-Gen_AI-Hackathon/blob/documentation/static/chitchat%20one.png)
 
+### LangChain: Connecting Local Data with LLMs
+**LangChain** is a framework that helps developers create applications using **Large Language Models (LLMs)**. One of the most common uses of LangChain is to convert local data to a **vectorstore**, which allows LLMs to access and process local data more efficiently. After the data is connected to the LLM, it can be used to create various applications, such as:
+- **Chatbots**
+- **Question-answering systems**
+- **Summarization tools**
+
+### Groq API: Connecting to High-Performance Processing Systems
+**Groq** provides an API that allows developers to connect their systems to Groq's high-performance **processing units**. The Groq API serves as a bridge between the developer's system and Groq’s processing resources. To use the API:
+1. Developers need to create a **Groq account**.
+2. Obtain an **API key**, which serves as a password granting access to Groq’s processing resources.
+3. Once the connection is established, developers can send tasks to Groq's systems and receive processed results.
+
+### ChromaDB: Vector Database for Storing Large Data
+**ChromaDB** is a **vector database** used to store and query large amounts of data. To create a generative AI model using local data with ChromaDB:
+1. The local data is first **converted into a vector format**.
+2. Once in vector format, the data can be **stored in ChromaDB**.
+This vector data can then be accessed by LLMs to process tasks such as answering questions or generating summaries.
+
+### HTML and CSS: Building Interactive Web Applications
+**HTML** and **CSS** are essential tools for creating interactive and visually appealing web applications. 
+- **HTML** provides the structure of the web page, while **CSS** enhances the appearance and layout. 
+- HTML is used to design the structure of the webpage, and then CSS is applied to style and format it, making the application more **user-friendly** and **responsive**.
+
+### Robotics: Physical Architecture for AI Models
+**Robotics** provides the physical machine architecture for the virtual AI model. In the case of the **Chit Chat Robotic Bot**:
+- The bot is a **self-phased, human-following robot** equipped with a **microphone** and **sensors** to follow and listen to visitor commands.
+- These commands are processed and integrated into the **pretrained AI model**, allowing the robot to display and answer visitor queries.
+
+This integration of **LLMs, Groq's processing systems, ChromaDB, HTML/CSS, and robotics** results in a fully functional **Chit Chat Robotic Bot** capable of enhancing museum experiences by providing detailed and interactive responses to visitor questions.
+
+
 
