@@ -75,7 +75,7 @@ The entire application is displayed on a **self-propelled robot** that can move 
 ![Solution Architecture](https://github.com/dev-dhanushkumar/Intel-Gen_AI-Hackathon/blob/documentation/static/chitchat%20one.png)
 
 ## Technological Architecture
-![Technological Architecture](https://github.com/dev-dhanushkumar/Intel-Gen_AI-Hackathon/blob/documentation/static/chitchat%20one.png)
+![Technological Architecture](https://github.com/dev-dhanushkumar/Intel-Gen_AI-Hackathon/blob/documentation/static/tech%20arch.png)
 
 ### LangChain: Connecting Local Data with LLMs
 **LangChain** is a framework that helps developers create applications using **Large Language Models (LLMs)**. One of the most common uses of LangChain is to convert local data to a **vectorstore**, which allows LLMs to access and process local data more efficiently. After the data is connected to the LLM, it can be used to create various applications, such as:
